@@ -1,0 +1,124 @@
+rzip_v1
+=======
+ plasma_less
+ [A, B, C, D, curlyM, curlyR, Fs, Fd, Decaybar, bz_bar, dbrdzbar, alpha, IFLAG] = rzip_v1(0    ,.55,1:19,38,[0 0 0 0],'tcv');
+ plasma_v2
+ [A, B, C, D, curlyM, curlyR, Fs, Fd, Decaybar, bz_bar, dbrdzbar, alpha, IFLAG] = rzip_v1(11619,.55,1:19,38,[0 0 0 0],'tcv');
+ test case
+ [A, B, C, D, curlyM, curlyR, Fs, Fd, Decaybar, bz_bar, dbrdzbar, alpha, IFLAG] = rzip_v1(13333,.30,1:18,38,[0 0 0 0],'tcv');
+
+  Using workspace plasma less data
+  Using workspace plasma full data
+  bz_plas,alpha = -0.06028  -2.201e-06
+  First 10 eigenmodes are
+  101.7
+  0
+  0
+  0
+  -1.183
+  -1.507
+  -3.333
+  -3.935
+  -5.044
+  -5.814
+
+rzip_v2
+=======
+
+tcv
+---
+ plasma_less
+ [A, B, C, D, curlyM, curlyR, plasma_outputs, IFLAG] = rzip_v2(0,.55,1:19,38,[0 0 0 0],'tcv',0,'');
+
+ assorted shots, coils and eigenmodes
+ [A, B, C, D, curlyM, curlyR, plasma_outputs, IFLAG] = rzip_v2(11619,.55,1:19,38,[0 0 0 0],'tcv',0,'');
+ [A, B, C, D, curlyM, curlyR, plasma_outputs, IFLAG] = rzip_v2(13333,.3,1:18,38,[0 0 0 0],'tcv',0,'');
+ [A, B, C, D, curlyM, curlyR, plasma_outputs, IFLAG] = rzip_v2(13333,.55,1:18,10,[0 0 0 0],'tcv',0,'');
+
+ forced file storage
+ [A, B, C, D, curlyM, curlyR, plasma_outputs, IFLAG] = rzip_v2(13333,.55,1:19,38,[0 0 0 0],'tcv',1,'');
+ [A, B, C, D, curlyM, curlyR, plasma_outputs, IFLAG] = rzip_v2(0,.55,1:19,38,[0 0 0 0],'tcv',1,'');
+
+iter
+----
+ plasma_less
+ [A, B, C, D, curlyM, curlyR, plasma_outputs, IFLAG] = rzip_v2(0,.55,1:12,38,[0 0 0 0],'iter',0,'');
+ plasma_v2
+ [A, B, C, D, curlyM, curlyR, plasma_outputs, IFLAG] = rzip_v2(100,.55,1:12,38,[0 0 0 0],'iter',0,'');
+
+jt60u
+-----
+ [A, B, C, D, curlyM, curlyR, plasma_outputs, IFLAG] = rzip_v2(0,.55,1:4,38,[0 0 0 0],'jt60u',0,'');
+ Fake plasma_v2 (timing)
+ [A, B, C, D, curlyM, curlyR, plasma_outputs, IFLAG] = rzip_v2(0,.55,1:4,38,[0 0 0 0],'jt60u',0,'');
+
+mast
+----
+ [A, B, C, D, curlyM, curlyR, plasma_outputs, IFLAG] = rzip_v2(0,1,1:8,38,[0 0 0 0],'mast',0,'');
+ Fake plasma_v2 (timing)
+
+ !make_case1
+ clear global L_struct
+ [A1, B1, C1, D1, curlyM1, curlyR1, plasma_outputs1, IFLAG] = rzip_v2(1,1,1:8,38,[0 0 0 0],'mast',0,'');
+% [J1,Ar1,Rp1,Zp1,Bp1,li1,Ia1]=mast_plasma(1,1);
+ !make_case2
+ clear global L_struct
+ [A2, B2, C2, D2, curlyM2, curlyR2, plasma_outputs2, IFLAG] = rzip_v2(2,1,1:8,38,[0 0 0 0],'mast',0,'');
+% [J2,Ar2,Rp2,Zp2,Bp2,li2,Ia2]=mast_plasma(2,1);
+ !make_case3
+ clear global L_struct
+ [A3, B3, C3, D3, curlyM3, curlyR3, plasma_outputs3, IFLAG] = rzip_v2(3,1,1:8,38,[0 0 0 0],'mast',0,'');
+% [J3,Ar3,Rp3,Zp3,Bp3,li3,Ia3]=mast_plasma(3,1);
+
+
+ !make_case1
+ clear global L_struct
+ [A1, B1, C1, D1, curlyM1, curlyR1, plasma_outputs1, IFLAG] = rzip_noeig(1,1,1:8,[0 0 0 0],'mast',1,'');
+ !make_case2
+ clear global L_struct
+ [A2, B2, C2, D2, curlyM2, curlyR2, plasma_outputs2, IFLAG] = rzip_noeig(2,1,1:8,[0 0 0 0],'mast',1,'');
+ !make_case3
+ clear global L_struct
+ [A3, B3, C3, D3, curlyM3, curlyR3, plasma_outputs3, IFLAG] = rzip_noeig(3,1,1:8,[0 0 0 0],'mast',1,'');
+
+
+
+
+
+
+
+
+
+
+
+
+
+clear global L_struct
+ [A_rz, B_rz, C_rz, D_rz, curlyM_rz, curlyR_rz, plasma_outputs_rz, IFLAG_rz] = rzip_v2(100,1,1:18,38,[0 0 0 0],'tcv',0,'');
+clear global L_struct
+ [A_dv, B_dv, C_dv, D_dv, curlyM_dv, curlyR_dv, plasma_outputs_dv, IFLAG_dv] = rzip_ati(100,1,1:18,38,[0 0 0 0],'tcv',0,'');
+
+  w=logspace(-1,3,20);
+  OH1 to IP
+  [M_rz,P_rz]=bode(A_rz,B_rz(:,1),C_rz(135,:),0,1,w);
+  [M_dv,P_dv]=bode(A_dv,B_dv(:,1),C_dv(135,:),0,1,w);
+  semilogx(w,20*log10(M_rz),'b',w,20*log10(M_dv),'ro')
+  PF E1 to bpol(1)
+  [M_rz,P_rz]=bode(A_rz,B_rz(:,3),C_rz(1,:),0,1,w);
+  [M_dv,P_dv]=bode(A_dv,B_dv(:,3),C_dv(1,:),0,1,w);
+  semilogx(w,20*log10(M_rz),'b',w,20*log10(M_dv),'ro')
+
+clear global L_struct
+ [A_rz, B_rz, C_rz, D_rz, curlyM_rz, curlyR_rz, plasma_outputs_rz, IFLAG_rz] = rzip_v2(13333,.3,1:18,38,[0 0 0 0],'tcv',0,'');
+clear global L_struct
+ [A_dv, B_dv, C_dv, D_dv, curlyM_dv, curlyR_dv, plasma_outputs_dv, IFLAG_dv] = rzip_ati(13333,.3,1:18,38,[0 0 0 0],'tcv',0,'');
+
+  w=logspace(-1,3,20);
+  OH1 to IP
+  [M_rz,P_rz]=bode(A_rz,B_rz(:,1),C_rz(135,:),0,1,w);
+  [M_dv,P_dv]=bode(A_dv,B_dv(:,1),C_dv(135,:),0,1,w);
+  semilogx(w,20*log10(M_rz),'b',w,20*log10(M_dv),'ro')
+  PF E1 to bpol(1)
+  [M_rz,P_rz]=bode(A_rz,B_rz(:,3),C_rz(1,:),0,1,w);
+  [M_dv,P_dv]=bode(A_dv,B_dv(:,3),C_dv(1,:),0,1,w);
+  semilogx(w,20*log10(M_rz),'b',w,20*log10(M_dv),'ro')

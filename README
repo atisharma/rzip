@@ -1,0 +1,85 @@
+
+    RZIP - a linear tokamak plasma equilibrium response model
+    
+    Copyright (C) 2000,2012 J Wainwright, A Sharma (1)
+    ati.sharma@gmail.com
+    (1) Automatic Control and Systems Engineering, University of Sheffield, S1 3JD, UK
+    
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+    In addition, if you use RZIP code or a derivative, we ask that you reference
+    the appropriate papers both in any resulting code or publications. 
+    
+    The most recent version should be available on github
+    
+
+FILES FOR MAKING RZIP MODELS
+=============================
+
+The model scripts
+-----------------
+ rzip.m	                     the basic model creator (currently equal to rzip_v3)
+ rzip_v1.m	                 the rzip used for the jt60 work and the original ID work
+ rzip_v2.m	                 the improved rzip_v1 leaner and asymmetric.             
+ rzip_v3.m	                 the Lagrangian rzip with multiple structure reduction.             
+
+ rzip_full.m                 a set of rzip_v2's which do not truncate the saving procedure.
+ rzip_fulle.m                save all eigenmodes.
+ rzip_noeig.m                save all circuits.
+
+
+
+ plot_machine.m              plot a machine
+ plot_machine3d.m            plot a machine with 3d current showing
+
+
+Current list of machines      
+------------------------
+ tcv                         TCV description
+ jt60u                       jt-60u description (complete but missing?)
+ iter                        An iter_RC design (missing?)
+ mast.m                      missing and still in development? MAST description
+
+Contents of subroutines directory
+---------------------------------
+ bfield_br.m                 calculate br
+ bfield_bz.m                 calculate bz
+ bfield_dbzdr.m              calculate dbzdr (=dbrdz)
+ bfield_dbzdz.m              calculate dbzdz
+ bfield_dbrdr.m              calculate dbrdr
+ bfield_dbrda.m              calculate dbrda (a and c refer to moving the source
+ bfield_dbrdc.m              calculate dbrdc  of current as opposed to the point
+ bfield_dbzda.m              calculate dbzda  of interest)
+ bfield_dbzdc.m              calculate dbzdc
+ vecpot_A.m                  calculate vector potential A
+ vecpot_dAda.m               calculate vector potential dAda
+ vecpot_dAdc.m               calculate vector potential dAdc
+ mutual_ind.m                calculate mutual inductance
+ self_circ.m                 calculate self inductance circular cross section
+ self_sqre.m                 calculate self inductance rectangular cross section
+ check_is_column.m           check all inputs are columns
+ coil_from_filaments.m       combine the filaments to coils according to inputs
+ unique_name.m               demarks the occurances of names in a column name list
+ plot_box.m                  plot a square
+ plot_box2.m                 plot a square with a coloured border
+ 
+ 
+ Other routines used for the TCV control problem
+ -----------------------------------------------
+ tcv_observer.m              loads and forms the TCV control variable observer
+ tcv_powersupplies.m         forms a TCV coil power supply model needed for the control problem
+ rzip_demo.m                 makes an rzip model of shot 13333, forms an H-inf controller, and compares it in simulation to the PID controller used on the actual shot.
+
+
