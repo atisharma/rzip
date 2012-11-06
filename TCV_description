@@ -1,0 +1,29 @@
+This file describes typical magnitudes for TCV outputs and the power supply limits.
+
+The power supply saturation limits for coils 1:19 are as follows (in V)
+as used in the code:
+PSlimits = [1399 1399 648 648 648 648 648 648 648 648 1250 1250 1250 1250 1250 1250 1250 1250 566]
+
+saturation limits (voltage and current)
+OH1, OH2:   1399V, 31kA
+E1-E8:      648V, 7.7kA
+F1-F8:      1250V, 7.7kA
+G:          566V, 500A (continuous) or 2kA (up to 2s every 5 min)
+
+
+The outputs of the model are
+
+p_{vert}        --  a radial position measure
+tri_{out}       --  outer field curvature (shape)
+tri_{in}        --  inner field curvature (shape)
+zI_{p}          --  plasma vertical position (multiplied by 10,000)
+I_{p}/10^{4}    --  plasma current (divided by 10,000)
+\psi_{R}        --  not used
+
+typical values should be kept in the range
+|p_{vert}| < 0.1
+|tri_{out}| < 0.1
+|tri_{in}| < 0.1
+|zI_{p}| < 5000
+|I_{p}/10^{4}| < 1
+
